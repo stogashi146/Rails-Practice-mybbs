@@ -4,6 +4,10 @@
   <strong>Content:</strong>
   <%= @diary.content %>
 </p>
+<p>
+  <strong>Weather:</strong>
+  <%= @diary.weather %>
+</p>
 
 <%= link_to 'Edit', edit_diary_path(@diary) %> |
 <%= link_to 'Back', diaries_path %>

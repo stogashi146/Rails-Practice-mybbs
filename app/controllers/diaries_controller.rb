@@ -3,7 +3,11 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all
+    if params[:weather_key]
+      @diaries = Diary.where("weather LIKE ?", "%#{params[:weather_key]}%")
+    else
+      @diaries = Diary.all
+    end
   end
 
   # GET /diaries/1 or /diaries/1.json
@@ -65,6 +69,6 @@ class DiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diary_params
-      params.require(:diary).permit(:content)
+      params.require(:diary).permit(:content, :weather)
     end
 end

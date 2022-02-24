@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Diaries</h1>
+<%= form_tag("/diaries", method: "get") do %>
+  <%= label_tag(:weather_key, "Search weather:") %>
+  <%= text_field_tag(:weather_key) %>
+  <%= submit_tag("Search") %> <%= link_to "Clear", diaries_path %>
+<% end %>
 
 <table>
   <thead>
